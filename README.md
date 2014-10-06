@@ -10,6 +10,7 @@ default
 -------
 
 Simply loops over the contents of `node['packages']` and installs them with the `package` resource.
+A custom action can be specified using `node['packages_action']`, such as `'upgrade'`. The default action is `'install'`.
 
 License and Author
 ==================

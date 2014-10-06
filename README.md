@@ -15,9 +15,9 @@ A custom action can be specified using `node['packages_action']`, such as `'upgr
 License and Author
 ==================
 
-Author:: Matt Ray (<matt@opscode.com>)
+Author:: Matt Ray (<matt@getchef.com>)
 
-Copyright 2013 Opscode, Inc.
+Copyright 2013-2014 Chef Software, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

@@ -1,7 +1,28 @@
 Description
 ===========
 
-Trivial cookbook to install a list of packages from an attribute.
+Trivial cookbook to manage a list of packages from an attribute.
+
+Attributes
+==========
+
+This cookbook has one attribute, `node['packages']`, which determines package names to manage with the `package` resource in Chef in the `packages::default` recipe. It can be specified as an array of strings that are packages to install, or as a hash of packages with an action to take.
+
+In this example:
+
+```ruby
+node.default['packages'] = ['git', 'openssl']
+```
+
+The `git` and `openssl` packages will be installed.
+
+In this example, using a hash of packages and actions:
+
+```ruby
+node.default['packages'] = {'git' => 'install', 'openssl' => 'upgrade', 'xorg-common' => 'remove'}
+```
+
+The `git` package will be installed, `openssl` will be upgraded, and `xorg-common` will be removed.
 
 Recipe
 =======
@@ -16,6 +37,7 @@ License and Author
 ==================
 
 Author:: Matt Ray (<matt@getchef.com>)
+Author:: Joshua Timberman (<joshua@getchef.com>)
 
 Copyright 2013-2014 Chef Software, Inc.
 

@@ -17,9 +17,21 @@
 # limitations under the License.
 #
 
-Chef::Log.info "packages:#{node['packages']}"
-node['packages'].each do |pkg|
-  package pkg do
-    action node['packages_action'].to_sym
+Chef::Log.info "packages:#{node['packages'].inspect}"
+
+case node['packages']
+when Array
+
+  node['packages'].each do |pkg|
+    package pkg
   end
+
+when Hash
+
+  node['packages'].each do |pkg, act|
+    package pkg.to_s do
+      action act.to_sym
+    end
+  end
+
 end

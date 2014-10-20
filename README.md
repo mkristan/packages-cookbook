@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mattray/packages-cookbook.png)](https://travis-ci.org/mattray/packages-cookbook)
+
 Description
 ===========
 

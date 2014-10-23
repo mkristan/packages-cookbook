@@ -1,10 +1,10 @@
 language: ruby
+bundler_args: --without kitchen_vagrant
 rvm:
   - 1.9.3
   - 2.0.0
   - 2.1.2
 script:
+  - bundle exec rubocop
+  - bundle exec foodcritic ./
   - bundle exec rspec
-env:
-  - CHEF_VERSION=0.10.34
-  - CHEF_VERSION=11.16.4

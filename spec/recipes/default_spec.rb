@@ -4,7 +4,7 @@ describe 'packages::default' do
   context 'packages attribute is an array' do
     let(:chef_run) do
       ChefSpec::Runner.new do |node|
-        node.set['packages'] = ['bash', 'openssl']
+        node.set['packages'] = %w(bash openssl)
       end.converge(described_recipe)
     end
 

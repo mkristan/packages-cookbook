@@ -23,7 +23,9 @@ case node['packages']
 when Array
 
   node['packages'].each do |pkg|
-    package pkg
+    package pkg do
+      action node['packages_default_action'].to_sym
+    end
   end
 
 when Hash

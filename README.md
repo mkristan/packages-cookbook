@@ -8,7 +8,10 @@ Trivial cookbook to manage a list of packages from an attribute.
 Attributes
 ==========
 
-This cookbook has one attribute, `node['packages']`, which determines package names to manage with the `package` resource in Chef in the `packages::default` recipe. It can be specified as an array of strings that are packages to install, or as a hash of packages with an action to take.
+packages
+--------
+
+Determines package names to manage with the `package` resource in Chef in the `packages::default` recipe. It can be specified as an array of strings that are packages to install, or as a hash of packages with an action to take.
 
 In this example:
 
@@ -26,14 +29,18 @@ node.default['packages'] = {'git' => 'install', 'openssl' => 'upgrade', 'xorg-co
 
 The `git` package will be installed, `openssl` will be upgraded, and `xorg-common` will be removed.
 
+packages_default_action
+-----------------------
+
+Determintes the default action that the package resource will take on the list of packages. By default this is `"install"`. Has no effect if the `packages` attribute is a hash.
+
 Recipe
 =======
 
 default
 -------
 
-Simply loops over the contents of `node['packages']` and installs them with the `package` resource.
-A custom action can be specified using `node['packages_action']`, such as `'upgrade'`. The default action is `'install'`.
+Simply loops over the contents of `node['packages']` and executes the specified action with the `package` resource.
 
 License and Author
 ==================

@@ -19,19 +19,16 @@
 
 Chef::Log.info "packages:#{node['packages'].inspect}"
 
-case node['packages']
-when Array
-
+if node['packages'].kind_of?(Array)
   node['packages'].each do |pkg|
     package pkg
   end
-
-when Hash
-
+elsif node['packages'].kind_of?(Hash)
   node['packages'].each do |pkg, act|
     package pkg.to_s do
       action act.to_sym
     end
   end
-
+else
+  Chef::Log.warn('`node["packages"]` must be an Array or Hash.')
 end

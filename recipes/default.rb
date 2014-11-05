@@ -2,7 +2,7 @@
 # Cookbook Name:: packages
 # Recipe:: default
 #
-# Copyright 2013, Opscode, Inc.
+# Copyright 2013-2014, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,21 +19,18 @@
 
 Chef::Log.info "packages:#{node['packages'].inspect}"
 
-case node['packages']
-when Array
-
+if node['packages'].kind_of?(Array)
   node['packages'].each do |pkg|
     package pkg do
       action node['packages_default_action'].to_sym
     end
   end
-
-when Hash
-
+elsif node['packages'].kind_of?(Hash)
   node['packages'].each do |pkg, act|
     package pkg.to_s do
       action act.to_sym
     end
   end
-
+else
+  Chef::Log.warn('`node["packages"]` must be an Array or Hash.')
 end

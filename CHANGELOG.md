@@ -1,3 +1,7 @@
+## 0.4.0:
+
+* Clean up Arrays handling (@paulmooring)
+
 ## 0.3.0:
 
 * Support for packages hash with action to take (@jtimberman)

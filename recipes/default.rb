@@ -19,13 +19,13 @@
 
 Chef::Log.info "packages:#{node['packages'].inspect}"
 
-if node['packages'].kind_of?(Array)
+if node['packages'].is_a?(Array)
   node['packages'].each do |pkg|
     package pkg do
       action node['packages_default_action'].to_sym
     end
   end
-elsif node['packages'].kind_of?(Hash)
+elsif node['packages'].is_a?(Hash)
   node['packages'].each do |pkg, act|
     package pkg.to_s do
       action act.to_sym

@@ -40,7 +40,7 @@ Recipe
 default
 -------
 
-Simply loops over the contents of `node['packages']` and executes the specified action with the `package` resource.
+The recipe installs the packages specified in the `node['packages']` attribute. It will use Chef 12.1.0's "multipackage" feature if the attribute is an array.
 
 License and Author
 ==================
@@ -48,7 +48,7 @@ License and Author
 Author:: Matt Ray (<matt@getchef.com>)
 Author:: Joshua Timberman (<joshua@getchef.com>)
 
-Copyright 2013-2014 Chef Software, Inc.
+Copyright 2013-2015 Chef Software, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

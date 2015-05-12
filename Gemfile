@@ -11,5 +11,5 @@ group :development do
   gem 'berkshelf'
 end
 
-# gem 'excon', '0.40.0'
-# gem 'json', '1.8.1'
+gem 'test-kitchen'
+gem 'kitchen-vagrant'

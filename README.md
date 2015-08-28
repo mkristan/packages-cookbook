@@ -45,8 +45,9 @@ The recipe installs the packages specified in the `node['packages']` attribute. 
 License and Author
 ==================
 
-Author:: Matt Ray (<matt@getchef.com>)
-Author:: Joshua Timberman (<joshua@getchef.com>)
+Author:: Matt Ray (<matt@chef.io>)
+
+Author:: Joshua Timberman (<joshua@chef.io>)
 
 Copyright 2013-2015 Chef Software, Inc.
 

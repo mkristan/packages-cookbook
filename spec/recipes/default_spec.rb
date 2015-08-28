@@ -4,7 +4,7 @@ describe 'packages::default' do
   context 'packages attribute is an array' do
     context 'default action is install' do
       let(:chef_run) do
-        ChefSpec::Runner.new do |node|
+        ChefSpec::SoloRunner.new do |node|
           node.set['packages'] = %w(bash openssl)
         end.converge(described_recipe)
       end
@@ -20,7 +20,7 @@ describe 'packages::default' do
 
     context 'default action is upgrade' do
       let(:chef_run) do
-        ChefSpec::Runner.new do |node|
+        ChefSpec::SoloRunner.new do |node|
           node.set['packages'] = %w(bash openssl)
           node.set['packages_default_action'] = 'upgrade'
         end.converge(described_recipe)
@@ -38,7 +38,7 @@ describe 'packages::default' do
 
   context 'packages attribute is a hash' do
     let(:chef_run) do
-      ChefSpec::Runner.new do |node|
+      ChefSpec::SoloRunner.new do |node|
         node.set['packages'] = { 'bash' => 'install', 'openssl' => 'upgrade', 'xorg-common' => 'remove' }
       end.converge(described_recipe)
     end

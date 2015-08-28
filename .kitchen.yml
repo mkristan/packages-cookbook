@@ -7,7 +7,7 @@ provisioner:
 
 platforms:
   - name: ubuntu-14.04
-  - name: centos-6.6
+  - name: centos-6.7
 
 suites:
   - name: default
@@ -24,4 +24,4 @@ suites:
     attributes:
       packages: [bash, grep]
     provisioner:
-      require_chef_omnibus: 12.3.0
+      require_chef_omnibus: 12.4.1

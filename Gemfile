@@ -8,8 +8,8 @@ end
 group :development do
   gem 'rspec'
   gem 'chefspec'
-  gem 'berkshelf'
 end
 
 gem 'test-kitchen'
 gem 'kitchen-vagrant'
+gem 'berkshelf'

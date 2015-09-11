@@ -1,7 +1,7 @@
 ## 0.5.0:
 
 * Added support for Chef 12.1.0 multipackage feature
-* Reduced deprication warnings with SoloRunner
+* Reduced deprecation warnings with SoloRunner
 * Cleanup and expansion of testing code
 
 ## 0.4.0:
@@ -18,4 +18,4 @@
 
 ## 0.1.0:
 
-* initial release
+* Initial release

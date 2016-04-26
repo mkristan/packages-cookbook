@@ -2,7 +2,7 @@
 # Cookbook Name:: packages
 # Recipe:: default
 #
-# Copyright 2013-2014, Chef Software, Inc.
+# Copyright 2013-2016, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,23 +17,23 @@
 # limitations under the License.
 #
 
-Chef::Log.info "packages:#{node['packages'].inspect}"
+Chef::Log.info "packages:#{node['packages-cookbook'].inspect}"
 
-case node['packages']
+case node['packages-cookbook']
 when Array
   if multipackage_supported?
-    package node['packages'] do
-      action node['packages_default_action'].to_sym
+    package node['packages-cookbook'] do
+      action node['packages-cookbook_default_action'].to_sym
     end
   else
-    node['packages'].each do |pkg|
+    node['packages-cookbook'].each do |pkg|
       package pkg do
-        action node['packages_default_action'].to_sym
+        action node['packages-cookbook_default_action'].to_sym
       end
     end
   end
 when Hash
-  node['packages'].each do |pkg, act|
+  node['packages-cookbook'].each do |pkg, act|
     package pkg.to_s do
       action act.to_sym
     end

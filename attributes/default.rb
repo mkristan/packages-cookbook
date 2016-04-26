@@ -1,2 +1,2 @@
-default['packages'] = []
-default['packages_default_action'] = 'install'
+default['packages-cookbook'] = []
+default['packages-cookbook_default_action'] = 'install'

@@ -1,10 +1,22 @@
 sudo: false
 language: ruby
 bundler_args: --without kitchen_vagrant
-rvm:
-  - 2.0.0
-  - 2.1.2
+
+addons:
+  apt:
+    sources:
+      - chef-current-precise
+    packages:
+      - chefdk
+
+# Ensure we make ChefDK's Ruby the default
+before_script:
+  - eval "$(/opt/chefdk/bin/chef shell-init bash)"
 script:
-  - bundle exec rubocop
-  - bundle exec foodcritic --exclude spec ./
-  - bundle exec rspec
+  - /opt/chefdk/embedded/bin/chef --version
+  - /opt/chefdk/embedded/bin/rubocop --version
+  - /opt/chefdk/embedded/bin/rspec --version
+  - /opt/chefdk/embedded/bin/foodcritic --version
+  - /opt/chefdk/embedded/bin/rubocop
+  - /opt/chefdk/embedded/bin/foodcritic . --exclude spec
+  - /opt/chefdk/embedded/bin/rspec

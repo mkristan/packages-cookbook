@@ -1,3 +1,7 @@
+## 1.0.0:
+* Move attributes to 'packages-cookbook' to avoid Ohai attribute conflicts
+* Clean up Travis.CI testing
+
 ## 0.5.0:
 
 * Added support for Chef 12.1.0 multipackage feature

@@ -5,7 +5,7 @@ describe 'packages::default' do
     context 'default action is install' do
       let(:chef_run) do
         ChefSpec::SoloRunner.new do |node|
-          node.set['packages'] = %w(git)
+          node.set['packages-cookbook'] = %w(git)
         end.converge(described_recipe)
       end
 
@@ -17,7 +17,7 @@ describe 'packages::default' do
     context 'default action is install multiple' do
       let(:chef_run) do
         ChefSpec::SoloRunner.new do |node|
-          node.set['packages'] = %w(bash openssl)
+          node.set['packages-cookbook'] = %w(bash openssl)
         end.converge(described_recipe)
       end
 
@@ -29,8 +29,8 @@ describe 'packages::default' do
     context 'default action is upgrade' do
       let(:chef_run) do
         ChefSpec::SoloRunner.new do |node|
-          node.set['packages'] = %w(git)
-          node.set['packages_default_action'] = 'upgrade'
+          node.set['packages-cookbook'] = %w(git)
+          node.set['packages-cookbook_default_action'] = 'upgrade'
         end.converge(described_recipe)
       end
 
@@ -42,8 +42,8 @@ describe 'packages::default' do
     context 'default action is upgrade multiple' do
       let(:chef_run) do
         ChefSpec::SoloRunner.new do |node|
-          node.set['packages'] = %w(bash openssl)
-          node.set['packages_default_action'] = 'upgrade'
+          node.set['packages-cookbook'] = %w(bash openssl)
+          node.set['packages-cookbook_default_action'] = 'upgrade'
         end.converge(described_recipe)
       end
 
@@ -56,7 +56,7 @@ describe 'packages::default' do
   context 'packages attribute is a hash' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new do |node|
-        node.set['packages'] = { 'bash' => 'install', 'openssl' => 'upgrade', 'xorg-common' => 'remove' }
+        node.set['packages-cookbook'] = { 'bash' => 'install', 'openssl' => 'upgrade', 'xorg-common' => 'remove' }
       end.converge(described_recipe)
     end
 

@@ -18,10 +18,13 @@
 # available in Chef 12.1.0+, it is better to ask for the feature,
 # rather than ask for the Chef version.
 def multipackage_supported?
-  Chef::Resource::Package.new([], nil).package_name([])
-  Chef::Log.debug('This version of Chef supports "multipackage"')
-  true
-rescue Chef::Exceptions::ValidationFailed
-  Chef::Log.debug('This version of Chef does not support "multipackage"')
-  false
+  resource = Chef::Resource::Package.new('', node)
+  provider = resource.provider_for_action(:install)
+  if provider.respond_to?('use_multipackage_api?') && provider.use_multipackage_api?
+    Chef::Log.debug("This version of #{provider.class} supports 'multipackage'")
+    return true
+  else
+    Chef::Log.debug("This version of #{provider.class} does not support 'multipackage'")
+    return false
+  end
 end

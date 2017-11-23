@@ -21,6 +21,7 @@ Chef::Log.info "packages:#{node['packages-cookbook'].inspect}"
 
 case node['packages-cookbook']
 when Array
+  return if node['packages-cookbook'].empty?
   if multipackage_supported?
     package node['packages-cookbook'] do
       action node['packages-cookbook_default_action'].to_sym
@@ -33,6 +34,7 @@ when Array
     end
   end
 when Hash
+  return if node['packages-cookbook'].empty?
   node['packages-cookbook'].each do |pkg, act|
     package pkg.to_s do
       action act.to_sym

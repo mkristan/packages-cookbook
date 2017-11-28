@@ -10,8 +10,8 @@ Attributes
 
 Note that we namespace the attributes with `packages-cookbook` so we don't conflict with the Ohai-generated attributes.
 
-packages-cookbook
------------------
+packages-cookbook array
+-----------------------
 
 Determines package names to manage with the `package` resource in Chef in the `packages::default` recipe. It can be specified as an array of strings that are packages to install, or as a hash of packages with an action to take.
 
@@ -22,6 +22,9 @@ node.default['packages-cookbook'] = ['git', 'openssl']
 ```
 
 The `git` and `openssl` packages will be installed.
+
+packages-cookbook hash
+----------------------
 
 In this example, using a hash of packages and actions:
 

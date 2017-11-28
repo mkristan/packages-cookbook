@@ -35,9 +35,15 @@ when Array
   end
 when Hash
   return if node['packages-cookbook'].empty?
-  node['packages-cookbook'].each do |pkg, act|
-    package pkg.to_s do
-      action act.to_sym
+  if multipackage_supported?
+    package node['packages-cookbook'].keys do
+      action node['packages-cookbook'].values.collect { |act| act.to_sym }
+    end
+  else
+    node['packages-cookbook'].each do |pkg, act|
+      package pkg.to_s do
+        action act.to_sym
+      end
     end
   end
 else

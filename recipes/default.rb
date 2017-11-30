@@ -37,7 +37,7 @@ when Hash
   return if node['packages-cookbook'].empty?
   if multipackage_supported?
     package node['packages-cookbook'].keys do
-      action node['packages-cookbook'].values.collect { |act| act.to_sym }
+      action node['packages-cookbook'].values.collect(&:to_sym)
     end
   else
     node['packages-cookbook'].each do |pkg, act|

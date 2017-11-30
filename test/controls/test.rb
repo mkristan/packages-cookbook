@@ -6,8 +6,8 @@ control 'Validate packages cookbook' do
   title 'Test packages cookbook'
   desc 'Test packages cookbook'
 
-  ['grep', 'nano', 'scrub'].each do |pkg|
-    describe package("#{pkg}") do
+  %w( grep nano scrub ).each do |pkg|
+    describe package(pkg) do
       it { should be_installed }
     end
   end

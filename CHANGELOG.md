@@ -1,3 +1,7 @@
+## 1.1.0
+* Improved multipackage support
+* Empty? attribute guard
+
 ## 1.0.0:
 * Move attributes to 'packages-cookbook' to avoid Ohai attribute conflicts
 * Clean up Travis.CI testing

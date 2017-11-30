@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
-describe 'packages::default' do # rubocop:disable BlockLength
-  context 'packages attribute is an array' do # rubocop:disable BlockLength
+describe 'packages::default' do
+  context 'packages attribute is an array' do
     context 'default action is install' do
       let(:chef_run) do
         ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '16.04') do |node|
@@ -22,14 +22,14 @@ describe 'packages::default' do # rubocop:disable BlockLength
       end
 
       it 'installs bash and openssl' do
-        expect(chef_run).to install_package(%w[bash openssl])
+        expect(chef_run).to install_package(%w( bash openssl ))
       end
     end
 
     context 'default action is install multiple separately' do
       let(:chef_run) do
         ChefSpec::SoloRunner.new(platform: 'mac_os_x', version: '10.12') do |node|
-          node.set['packages-cookbook'] = %w[bash openssl]
+          node.set['packages-cookbook'] = %w( bash openssl )
         end.converge(described_recipe)
       end
 
